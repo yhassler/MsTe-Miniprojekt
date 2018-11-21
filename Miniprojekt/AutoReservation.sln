@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReservation.Service.Wcf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{8C52366D-F400-4ADF-B894-082CA580BECA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReservation.UI", "AutoReservation.UI\AutoReservation.UI.csproj", "{E15082FC-E011-4732-8E19-79243462B2DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,24 @@ Global
 		{4E17D89D-F65A-4F89-BCEE-28171FA1A01C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4E17D89D-F65A-4F89-BCEE-28171FA1A01C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4E17D89D-F65A-4F89-BCEE-28171FA1A01C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|x86.ActiveCfg = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Default|x86.Build.0 = Debug|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{E15082FC-E011-4732-8E19-79243462B2DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

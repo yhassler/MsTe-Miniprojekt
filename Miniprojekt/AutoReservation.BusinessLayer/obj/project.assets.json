@@ -1011,11 +1011,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\AutoReservation.BusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\AutoReservation.BusinessLayer.csproj",
       "projectName": "AutoReservation.BusinessLayer",
-      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\AutoReservation.BusinessLayer.csproj",
+      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\AutoReservation.BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\Yannick\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1034,8 +1034,8 @@
       "frameworks": {
         "net471": {
           "projectReferences": {
-            "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj": {
-              "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj"
+            "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj": {
+              "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj"
             }
           }
         }

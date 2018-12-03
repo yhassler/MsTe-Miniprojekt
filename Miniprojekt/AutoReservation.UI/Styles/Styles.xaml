@@ -10,6 +10,10 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
+    <Style x:Key="GeneralButton" BasedOn="{StaticResource EditControl}" TargetType="Button">
+        <Setter Property="Width" Value="130" />
+    </Style>
+
     <Style BasedOn="{StaticResource EditControl}" TargetType="Label" />
     <Style BasedOn="{StaticResource EditControl}" TargetType="TextBox" />
     <Style BasedOn="{StaticResource EditControl}" TargetType="ComboBox" />

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Common\\AutoReservation.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Common\\AutoReservation.Common.csproj",
       "projectName": "AutoReservation.Common",
-      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Common\\AutoReservation.Common.csproj",
+      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Common\\AutoReservation.Common.csproj",
       "packagesPath": "C:\\Users\\Yannick\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Common\\obj\\",
+      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

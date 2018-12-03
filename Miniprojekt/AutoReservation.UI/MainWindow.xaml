@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoReservation.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AutoReservation" Height="700" Width="1000">
+    <StackPanel Orientation="Horizontal">
+        <Grid>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="150"/>
+               <ColumnDefinition Width="5" />
+               <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ListBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
+                <Label Content="Navigation" FontWeight="Bold" FontSize="18" />
+                <Label Content="Autoverwaltung" FontWeight="Bold" FontSize="14"/>
+                <Label Content="Übersicht" Padding="20 0" FontSize="14"/>
+                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
+                <Label Content="Kundenverwaltung" FontWeight="Bold" FontSize="14"/>
+                <Label Content="Übersicht" Padding="20 0" FontSize="14"/>
+                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
+                <Label Content="Reservationen" FontWeight="Bold" FontSize="14"/>
+                <Label Content="Übersicht" Padding="20 0" FontSize="14"/>
+                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
+            </ListBox>
+        </Grid>
+        <Frame Source="WelcomePage.xaml" Width="800" Margin="20" />
+
+    </StackPanel>
 </Window>

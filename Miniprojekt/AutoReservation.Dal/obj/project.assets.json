@@ -993,11 +993,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj",
+      "projectUniqueName": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj",
       "projectName": "AutoReservation.Dal",
-      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj",
+      "projectPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\AutoReservation.Dal.csproj",
       "packagesPath": "C:\\Users\\Yannick\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\99_Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\obj\\",
+      "outputPath": "C:\\Users\\Yannick\\OneDrive\\Studium\\3. Semester\\MsTe\\MsTe-Miniprojekt\\Miniprojekt\\AutoReservation.Dal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

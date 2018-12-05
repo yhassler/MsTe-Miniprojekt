@@ -56,17 +56,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Pages\KundeEditierenPage.xaml.cs">
+      <DependentUpon>KundeEditierenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateConcurrencyWindow.xaml.cs">
       <DependentUpon>UpdateConcurrencyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AutoEditierenPage.xaml">
+    <Page Include="Views\Pages\AutoEditierenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AutoListePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\KundeEditierenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -78,7 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AutoEditierenPage.xaml.cs">
+    <Compile Include="Views\Pages\AutoEditierenPage.xaml.cs">
       <DependentUpon>AutoEditierenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="AutoListePage.xaml.cs">

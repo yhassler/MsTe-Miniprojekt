@@ -17,4 +17,5 @@
     <Style BasedOn="{StaticResource EditControl}" TargetType="Label" />
     <Style BasedOn="{StaticResource EditControl}" TargetType="TextBox" />
     <Style BasedOn="{StaticResource EditControl}" TargetType="ComboBox" />
+    <Style BasedOn="{StaticResource EditControl}" TargetType="Calendar" />
 </ResourceDictionary>

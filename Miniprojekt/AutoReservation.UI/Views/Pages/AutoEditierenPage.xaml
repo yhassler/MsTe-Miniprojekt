@@ -9,7 +9,7 @@
       Title="AutoEditierenPage">
 
     <Page.Resources>
-        <ResourceDictionary Source="Styles/Styles.xaml" />
+        <ResourceDictionary Source="/Styles/Styles.xaml" />
     </Page.Resources>
 
     <DockPanel>
@@ -38,7 +38,6 @@
 
             <Label Grid.Column="0" Grid.Row="3" Content="Tagestarif:" />
             <TextBox Grid.Column="1" Grid.Row="3" PreviewTextInput="UIElement_OnPreviewTextInput" />
-            <!-- TODO Numbers only -->
         </Grid>
     </DockPanel>
 </Page>

@@ -62,6 +62,9 @@
     <Compile Include="UpdateConcurrencyWindow.xaml.cs">
       <DependentUpon>UpdateConcurrencyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\ReservationEditierenPage.xaml.cs">
+      <DependentUpon>ReservationEditierenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateConcurrencyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ReservationEditierenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

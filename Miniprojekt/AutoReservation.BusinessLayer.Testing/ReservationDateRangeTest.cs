@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoReservation.BusinessLayer.Exceptions;
 using AutoReservation.TestEnvironment;
 using Xunit;
 
@@ -7,37 +8,37 @@ namespace AutoReservation.BusinessLayer.Testing
     public class ReservationDateRangeTest
         : TestBase
     {
-        private ReservationManager target;
-        private ReservationManager Target => target ?? (target = new ReservationManager());
-
         [Fact]
-        public void ScenarioOkay01Test()
+        public void OneDayTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            ReservationManager.CheckDateRange(new DateTime(2000, 01, 01), new DateTime(2000, 01, 02));
         }
 
         [Fact]
-        public void ScenarioOkay02Test()
+        public void OneYearTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            ReservationManager.CheckDateRange(new DateTime(2000, 01, 01), new DateTime(2000, 12, 31));
         }
 
         [Fact]
-        public void ScenarioNotOkay01Test()
+        public void EqualDateTimeTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            Assert.Throws<InvalidDateRangeException>(() =>
+                ReservationManager.CheckDateRange(new DateTime(2000, 01, 01), new DateTime(2000, 01, 01)));
         }
 
         [Fact]
-        public void ScenarioNotOkay02Test()
+        public void FewHoursTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            Assert.Throws<InvalidDateRangeException>(() =>
+                ReservationManager.CheckDateRange(new DateTime(2000, 01, 01, 00, 00, 00), new DateTime(2000, 01, 01, 23, 59, 59)));
         }
 
         [Fact]
-        public void ScenarioNotOkay03Test()
+        public void NegativeDateRangeTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            Assert.Throws<InvalidDateRangeException>(() =>
+                ReservationManager.CheckDateRange(new DateTime(2000, 02, 01), new DateTime(2000, 01, 01)));
         }
     }
 }

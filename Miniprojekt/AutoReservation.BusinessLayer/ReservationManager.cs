@@ -34,7 +34,7 @@ namespace AutoReservation.BusinessLayer
             using (var context = new AutoReservationContext())
             {
                 CheckDateRange(reservation.Von, reservation.Bis);
-                CheckAvailability(context, reservation.Auto, reservation.Von, reservation.Bis);
+                CheckAvailability(context, reservation);
 
                 context.Entry(reservation).State = EntityState.Added;
                 context.SaveChanges();
@@ -48,7 +48,7 @@ namespace AutoReservation.BusinessLayer
                 try
                 {
                     CheckDateRange(reservation.Von, reservation.Bis);
-                    CheckAvailability(context, reservation.Auto, reservation.Von, reservation.Bis);
+                    CheckAvailability(context, reservation);
 
                     context.Entry(reservation).State = EntityState.Modified;
                     context.SaveChanges();
@@ -81,27 +81,32 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public static void CheckAvailability(AutoReservationContext context, Auto auto, DateTime from, DateTime to)
+        public static void CheckAvailability(AutoReservationContext context, Reservation reservation)
         {
-            if (!IsAutoAvailable(context, auto, from, to))
+            if (!IsAutoAvailable(context, reservation))
             {
-                var msg = $"The car of the make \"${auto.Marke}\" is not available for the selected timespan";
-                throw new AutoUnavailableException(msg, auto.Id, from, to);
+                var msg = $"The car with id {reservation.AutoId} is not available for the selected timespan";
+                throw new AutoUnavailableException(msg, reservation.AutoId, reservation.Von, reservation.Bis);
             }
         }
 
-        public static bool IsAutoAvailable(Auto auto, DateTime from, DateTime to)
+        public static bool IsAutoAvailable(Reservation reservation)
         {
             using (var context = new AutoReservationContext())
             {
-                return IsAutoAvailable(context, auto, from, to);
+                return IsAutoAvailable(context, reservation);
             }
         }
 
-        private static bool IsAutoAvailable(AutoReservationContext context, Auto auto, DateTime from, DateTime to)
+        private static bool IsAutoAvailable(AutoReservationContext context, Reservation reservation)
         {
+            var resNr = reservation.ReservationsNr;
+            var autoId = reservation.AutoId;
+            var from = reservation.Von;
+            var to = reservation.Bis;
+
             return !context.Reservationen
-                .Any(r => r.Auto == auto && r.Von < to && from < r.Bis);
+                .Any(r => r.ReservationsNr != resNr && r.AutoId == autoId && r.Von < to && from < r.Bis);
         }
 
         #endregion

@@ -12,6 +12,8 @@ namespace AutoReservation.BusinessLayer.Testing
         private ReservationManager _target;
         private ReservationManager Target => _target ?? (_target = new ReservationManager());
 
+        #region Reservation available
+
         public ReservationAvailabilityTest()
         {
             // Prepare reservation
@@ -93,6 +95,10 @@ namespace AutoReservation.BusinessLayer.Testing
 
             Assert.True(ReservationManager.IsAutoAvailable(reservation));
         }
+
+        #endregion
+
+        #region Reservation not available
 
         [Fact]
         public void OverlapAtTheStartTest()
@@ -177,5 +183,7 @@ namespace AutoReservation.BusinessLayer.Testing
 
             Assert.False(ReservationManager.IsAutoAvailable(reservation));
         }
+
+        #endregion
     }
 }

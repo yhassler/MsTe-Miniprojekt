@@ -14,6 +14,13 @@ namespace AutoReservation.Service.Wcf
         private KundeManager KundeManager { get; set; }
         private ReservationManager ReservationManager { get; set; }
 
+        public AutoReservationService()
+        {
+            AutoManager = new AutoManager();
+            KundeManager = new KundeManager();
+            ReservationManager = new ReservationManager();
+        }
+
         private static void WriteActualMethod()
             => Console.WriteLine($"Calling: {new StackTrace().GetFrame(1).GetMethod().Name}");
 

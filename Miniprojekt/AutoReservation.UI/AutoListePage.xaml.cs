@@ -20,9 +20,12 @@ namespace AutoReservation.UI
     /// </summary>
     public partial class AutoListePage : Page
     {
+        CollectionViewSource KundenListe;
+
         public AutoListePage()
         {
             InitializeComponent();
+            KundenListe = (CollectionViewSource)(this.Resources[KundenListe]);
         }
     }
 }

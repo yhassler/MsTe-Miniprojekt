@@ -2,8 +2,8 @@
 {
     public enum AutoKlasse
     {
-        StandardAuto,
-        MittelklasseAuto,
-        LuxusklasseAuto
+        Standard,
+        Mittelklasse,
+        Luxusklasse
     }
 }

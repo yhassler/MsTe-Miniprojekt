@@ -23,6 +23,12 @@ namespace AutoReservation.UI
         public MainWindow()
         {
             InitializeComponent();
+            var vm = new MainWindow();
+            DataContext = vm;
+
+            void OpenPageCommand(Page page) {
+                MainFrame.Navigate(page);
+            }
         }
     }
 }

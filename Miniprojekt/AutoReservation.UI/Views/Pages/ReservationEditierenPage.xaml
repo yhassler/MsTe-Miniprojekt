@@ -4,16 +4,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoReservation.UI.Views.Pages"
+      xmlns:viewModels="clr-namespace:AutoReservation.UI.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReservationEditierenPage">
+      Title="ReservationEditierenPage" d:DataContext="{d:DesignInstance viewModels:ReservationEditierenViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="/Styles/Styles.xaml" />
     </Page.Resources>
 
     <DockPanel>
-        <Button Style="{StaticResource SaveButton}" DockPanel.Dock="Bottom" Content="Save" />
+        <Button Style="{StaticResource SaveButton}" DockPanel.Dock="Bottom" Content="Save"  Command="{Binding SaveCommand}" />
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -24,16 +25,20 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Auto:" />
-            <ComboBox Grid.Column="1" Grid.Row="0" />
+            <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Autos}" SelectedItem="{Binding Auto}" />
 
             <Label Grid.Column="0" Grid.Row="1" Content="Kunde:" />
-            <ComboBox Grid.Column="1" Grid.Row="1" />
+            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Kunden}" SelectedItem="{Binding Kunde}" />
 
-            <Label Grid.Column="0" Grid.Row="2" Content="Datumsbereich:" />
-            <Calendar Grid.Column="1" Grid.Row="2" FirstDayOfWeek="Monday" HorizontalAlignment="Left" SelectionMode="SingleRange" />
+            <Label Grid.Column="0" Grid.Row="2" Content="Von:" />
+            <Calendar Grid.Column="1" Grid.Row="2" FirstDayOfWeek="Monday" HorizontalAlignment="Left" SelectedDate="{Binding Von}"/>
+
+            <Label Grid.Column="0" Grid.Row="3" Content="Bis:" />
+            <Calendar Grid.Column="1" Grid.Row="3" FirstDayOfWeek="Monday" HorizontalAlignment="Left" SelectedDate="{Binding Bis}"/>
         </Grid>
     </DockPanel>
 </Page>

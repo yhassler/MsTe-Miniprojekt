@@ -4,16 +4,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AutoReservation.UI"
+      xmlns:viewModels="clr-namespace:AutoReservation.UI.ViewModels"
       mc:Ignorable="d"
       d:DesignHeight="250" d:DesignWidth="800"
-      Title="AutoEditierenPage">
+      Title="AutoEditierenPage" d:DataContext="{d:DesignInstance viewModels:AutoEditierenViewModel}">
 
     <Page.Resources>
         <ResourceDictionary Source="/Styles/Styles.xaml" />
     </Page.Resources>
 
     <DockPanel>
-        <Button Style="{StaticResource SaveButton}" DockPanel.Dock="Bottom" Content="Save" />
+        <Button Style="{StaticResource SaveButton}" DockPanel.Dock="Bottom" Content="Save" Command="{Binding SaveCommand}" />
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -28,16 +29,16 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0" Grid.Row="0" Content="Marke:" />
-            <TextBox Grid.Column="1" Grid.Row="0" />
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Marke}" />
 
             <Label Grid.Column="0" Grid.Row="1" Content="Autoklasse:" />
-            <ComboBox Grid.Column="1" Grid.Row="1" />
+            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding AutoKlassen}" SelectedItem="{Binding AutoKlasse}" />
 
             <Label Grid.Column="0" Grid.Row="2" Content="Basistarif:" />
-            <TextBox Grid.Column="1" Grid.Row="2" PreviewTextInput="UIElement_OnPreviewTextInput" />
+            <TextBox Grid.Column="1" Grid.Row="2" IsEnabled="{Binding HasBasistarif}" PreviewTextInput="UIElement_OnPreviewTextInput" Text="{Binding Basistarif}" />
 
             <Label Grid.Column="0" Grid.Row="3" Content="Tagestarif:" />
-            <TextBox Grid.Column="1" Grid.Row="3" PreviewTextInput="UIElement_OnPreviewTextInput" />
+            <TextBox Grid.Column="1" Grid.Row="3" PreviewTextInput="UIElement_OnPreviewTextInput" Text="{Binding Tagestarif}" />
         </Grid>
     </DockPanel>
 </Page>

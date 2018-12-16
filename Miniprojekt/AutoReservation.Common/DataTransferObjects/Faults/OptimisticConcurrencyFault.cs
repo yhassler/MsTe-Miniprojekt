@@ -9,7 +9,7 @@ namespace AutoReservation.Common.DataTransferObjects.Faults
 {
 
     [DataContract]
-    class OptimisticConcurrencyFault
+    public class OptimisticConcurrencyFault
     {
         [DataMember]
         public string Issue { get; set; }

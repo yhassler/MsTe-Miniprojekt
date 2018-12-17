@@ -62,8 +62,14 @@
     <Compile Include="UpdateConcurrencyWindow.xaml.cs">
       <DependentUpon>UpdateConcurrencyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\KundeListePage.xaml.cs">
+      <DependentUpon>KundeListePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\ReservationEditierenPage.xaml.cs">
       <DependentUpon>ReservationEditierenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ReservationListePage.xaml.cs">
+      <DependentUpon>ReservationListePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -72,7 +78,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AutoListePage.xaml">
+    <Page Include="Views\Pages\AutoListePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,7 +97,7 @@
     <Compile Include="Views\Pages\AutoEditierenPage.xaml.cs">
       <DependentUpon>AutoEditierenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AutoListePage.xaml.cs">
+    <Compile Include="Views\Pages\AutoListePage.xaml.cs">
       <DependentUpon>AutoListePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -106,7 +112,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\KundeListePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\ReservationEditierenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ReservationListePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

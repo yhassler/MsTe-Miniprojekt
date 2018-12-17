@@ -9,12 +9,7 @@
       Title="ReservationListePage">
 
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Styles.xaml"/>
-                <CollectionViewSource Source="{Binding Source={x:Static Application.Current}, Path=AutoDto}" x:Key="KundenListe" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <CollectionViewSource Source="{Binding Source={x:Static Application.Current}, Path=ReservationDto}" x:Key="ReservationListe" />
     </Page.Resources>
 
     <Grid>
@@ -26,12 +21,12 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <TextBlock />
-        <ListBox SelectionMode="Single" ItemsSource="{Binding Source={StaticResource KundenListe}}">
+        <ListBox SelectionMode="Single" ItemsSource="{Binding Source={StaticResource ReservationListe}}">
 
         </ListBox>
-        <Button Style="{StaticResource GeneralButton}" Content="Add" Click="" Grid.Column="0" Grid.Row="1"/>
-        <Button Style="{StaticResource GeneralButton}" Content="Edit" Click="" Grid.Column="0" Grid.Row="1" Margin="335 4 4 4"/>
-        <Button Style="{StaticResource GeneralButton}" Content="Remove" Click="" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"/>
+        <Button Content="Add" Click="Button_Click_Add" Grid.Column="0" Grid.Row="1"/>
+        <Button Content="Edit" Click="Button_Click_Edit" Grid.Column="0" Grid.Row="1" Margin="335 4 4 4"/>
+        <Button Content="Remove" Click="Button_Click_Delete" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"/>
     </Grid>
 
 </Page>

@@ -20,9 +20,26 @@ namespace AutoReservation.UI.Views.Pages
     /// </summary>
     public partial class KundeListePage : Page
     {
+        CollectionViewSource ReservationListe;
+
         public KundeListePage()
         {
-            InitializeComponent();
+            ReservationListe = (CollectionViewSource)(this.Resources[ReservationListe]);
+            DataContext = ReservationListe;
+        }
+
+        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_Delete(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

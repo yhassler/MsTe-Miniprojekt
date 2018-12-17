@@ -9,7 +9,7 @@ namespace AutoReservation.Common.DataTransferObjects.Faults
 {
 
     [DataContract]
-    class AutoUnavailableFault
+    public class AutoUnavailableFault
     {
         [DataMember]
         public string Issue { get; set; }

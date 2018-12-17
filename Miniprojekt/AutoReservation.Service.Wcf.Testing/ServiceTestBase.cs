@@ -2,6 +2,7 @@
 using System.Linq;
 using System.ServiceModel;
 using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.DataTransferObjects.Faults;
 using AutoReservation.Common.Interfaces;
 using AutoReservation.TestEnvironment;
 using Xunit;
@@ -217,19 +218,34 @@ namespace AutoReservation.Service.Wcf.Testing
         [Fact]
         public void UpdateAutoTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var auto = Target.GetAutoById(1);
+
+            auto.Tagestarif = 60;
+            Target.UpdateAuto(auto);
+            
+            Assert.Equal(60, Target.GetAutoById(1).Tagestarif);
         }
 
         [Fact]
         public void UpdateKundeTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var kunde = Target.GetKundeById(1);
+
+            kunde.Geburtsdatum = new DateTime(1981, 06, 07);
+            Target.UpdateKunde(kunde);
+
+            Assert.Equal(new DateTime(1981, 06, 07), Target.GetKundeById(1).Geburtsdatum);
         }
 
         [Fact]
         public void UpdateReservationTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = Target.GetReservationById(4);
+
+            reservation.Bis = new DateTime(2020, 07, 27);
+            Target.UpdateReservation(reservation);
+
+            Assert.Equal(new DateTime(2020, 07, 27), Target.GetReservationById(4).Bis);
         }
 
         #endregion
@@ -239,19 +255,40 @@ namespace AutoReservation.Service.Wcf.Testing
         [Fact]
         public void UpdateAutoWithOptimisticConcurrencyTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var auto1 = Target.GetAutoById(1);
+            var auto2 = Target.GetAutoById(1);
+
+            auto1.Tagestarif = 60;
+            auto2.Tagestarif = 60;
+            Target.UpdateAuto(auto1);
+
+            Assert.Throws<FaultException<OptimisticConcurrencyFault>>(() => Target.UpdateAuto(auto2));
         }
 
         [Fact]
         public void UpdateKundeWithOptimisticConcurrencyTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var kunde1 = Target.GetKundeById(1);
+            var kunde2 = Target.GetKundeById(1);
+
+            kunde1.Geburtsdatum = new DateTime(1981, 06, 07);
+            kunde2.Geburtsdatum = new DateTime(1981, 06, 07);
+            Target.UpdateKunde(kunde1);
+
+            Assert.Throws<FaultException<OptimisticConcurrencyFault>>(() => Target.UpdateKunde(kunde2));
         }
 
         [Fact]
         public void UpdateReservationWithOptimisticConcurrencyTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation1 = Target.GetReservationById(4);
+            var reservation2 = Target.GetReservationById(4);
+
+            reservation1.Bis = new DateTime(2020, 07, 27);
+            reservation2.Bis = new DateTime(2020, 07, 27);
+            Target.UpdateReservation(reservation1);
+
+            Assert.Throws<FaultException<OptimisticConcurrencyFault>>(() => Target.UpdateReservation(reservation2));
         }
 
         #endregion
@@ -261,25 +298,51 @@ namespace AutoReservation.Service.Wcf.Testing
         [Fact]
         public void InsertReservationWithInvalidDateRangeTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = new ReservationDto
+            {
+                Auto = Target.GetAutoById(1),
+                Kunde = Target.GetKundeById(1),
+                Von = new DateTime(2099, 09, 01),
+                Bis = new DateTime(2099, 09, 01)
+            };
+
+            Assert.Throws<FaultException<InvalidDateRangeFault>>(() => Target.InsertReservation(reservation));
         }
 
         [Fact]
         public void InsertReservationWithAutoNotAvailableTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = new ReservationDto
+            {
+                Auto = Target.GetAutoById(1),
+                Kunde = Target.GetKundeById(1),
+                Von = new DateTime(1999, 09, 01),
+                Bis = new DateTime(2099, 09, 01)
+            };
+
+            Assert.Throws<FaultException<AutoUnavailableFault>>(() => Target.InsertReservation(reservation));
         }
 
         [Fact]
         public void UpdateReservationWithInvalidDateRangeTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = Target.GetReservationById(4);
+
+            reservation.Von = new DateTime(2020, 07, 27);
+            reservation.Bis = new DateTime(2020, 07, 27);
+
+            Assert.Throws<FaultException<InvalidDateRangeFault>>(() => Target.UpdateReservation(reservation));
         }
 
         [Fact]
         public void UpdateReservationWithAutoNotAvailableTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = Target.GetReservationById(4);
+
+            reservation.Von = new DateTime(1920, 07, 27);
+            reservation.Bis = new DateTime(2120, 07, 26);
+
+            Assert.Throws<FaultException<AutoUnavailableFault>>(() => Target.UpdateReservation(reservation));
         }
 
         #endregion
@@ -289,13 +352,29 @@ namespace AutoReservation.Service.Wcf.Testing
         [Fact]
         public void CheckAvailabilityIsTrueTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = new ReservationDto
+            {
+                Auto = Target.GetAutoById(1),
+                Kunde = Target.GetKundeById(1),
+                Von = new DateTime(2095, 09, 01),
+                Bis = new DateTime(2095, 09, 02)
+            };
+            
+            Assert.True(Target.IsAutoAvailable(reservation));
         }
 
         [Fact]
         public void CheckAvailabilityIsFalseTest()
         {
-            throw new NotImplementedException("Test not implemented.");
+            var reservation = new ReservationDto
+            {
+                Auto = Target.GetAutoById(1),
+                Kunde = Target.GetKundeById(1),
+                Von = new DateTime(1995, 09, 01),
+                Bis = new DateTime(2095, 08, 31)
+            };
+
+            Assert.False(Target.IsAutoAvailable(reservation));
         }
 
         #endregion

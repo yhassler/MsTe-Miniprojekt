@@ -9,7 +9,7 @@ namespace AutoReservation.Common.DataTransferObjects.Faults
 {
 
     [DataContract]
-    class InvalidDateRangeFault
+    public class InvalidDateRangeFault
     {
         [DataMember]
         public string Issue { get; set; }

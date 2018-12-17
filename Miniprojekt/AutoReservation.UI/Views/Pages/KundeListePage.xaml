@@ -9,7 +9,7 @@
       Title="KundeListePage">
 
     <Page.Resources>
-        <CollectionViewSource Source="{Binding Source={x:Static Application.Current}, Path=ReservationDto}" x:Key="ReservationListe" />
+        <CollectionViewSource Source="{Binding Source={x:Static Application.Current}, Path=ReservationDto}" x:Key="KundenListe" />
     </Page.Resources>
 
     <Grid>
@@ -21,7 +21,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <TextBlock />
-        <ListBox SelectionMode="Single" ItemsSource="{Binding Source={StaticResource ReservationListe}}">
+        <ListBox SelectionMode="Single" ItemsSource="{Binding Source={StaticResource KundenListe}}">
 
         </ListBox>
         <Button Content="Add" Click="Button_Click_Add" Grid.Column="0" Grid.Row="1"/>

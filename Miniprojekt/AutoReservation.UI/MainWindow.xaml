@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="AutoReservation" Height="700" Width="1000">
 
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/Styles.xaml" />
+    </Window.Resources>
+    
     <StackPanel Orientation="Horizontal">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,17 +21,17 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ListBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
-                <Label Content="Navigation" FontWeight="Bold" FontSize="18"/>
-                <Label Content="Autoverwaltung" FontWeight="Bold" FontSize="14"/>
-                <Label Content="Übersicht" Padding="20 0" FontSize="14" />
-                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
-                <Label Content="Kundenverwaltung" FontWeight="Bold" FontSize="14"/>
-                <Label Content="Übersicht" Padding="20 0" FontSize="14"/>
-                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
-                <Label Content="Reservationen" FontWeight="Bold" FontSize="14"/>
-                <Label Content="Übersicht" Padding="20 0" FontSize="14"/>
-                <Label Content="Erstellen" Padding="20 0" FontSize="14"/>
+            <ListBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" SelectionChanged="LoadPage">
+                <ListBoxItem Content="Navigation" FontWeight="Bold" FontSize="18"/>
+                <ListBoxItem Content="Autoverwaltung" FontWeight="Bold" FontSize="14"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviAutoListe" Content="Übersicht"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviAutoAdd" Content="Erstellen"/>
+                <ListBoxItem Content="Kundenverwaltung" FontWeight="Bold" FontSize="14"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviKundeListe" Content="Übersicht"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviKundeAdd" Content="Erstellen"/>
+                <ListBoxItem Content="Reservationen" FontWeight="Bold" FontSize="14"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviReservationListe" Content="Übersicht"/>
+                <Button Style="{StaticResource NavigationButton}" Click="NaviReservationAdd" Content="Erstellen"/>
             </ListBox>
             <Frame x:Name="MainFrame" Source="WelcomePage.xaml" Grid.Column="2" Width="800" Margin="10" />
         </Grid>

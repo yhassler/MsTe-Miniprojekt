@@ -26,9 +26,35 @@ namespace AutoReservation.UI
             var vm = new MainWindow();
             DataContext = vm;
 
-            void OpenPageCommand(Page page) {
-                MainFrame.Navigate(page);
-            }
+        }
+
+        private void NaviAutoListe(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AutoListePage());
+        }
+
+        private void NaviAutoAdd(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AutoEditierenPage());
+        }
+
+        private void NaviKundeListe(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Kunde);
+        }
+
+        private void NaviKundeAdd(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new KundeEditierenPage());
+        }
+
+        private void NaviReservationListe(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ReseravationListePage());
+        }
+
+        private void NaviReservationAdd(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(ReservationEditierenPage);
         }
     }
-}

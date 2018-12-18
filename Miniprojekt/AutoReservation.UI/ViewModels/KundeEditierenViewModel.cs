@@ -31,7 +31,6 @@ namespace AutoReservation.UI.ViewModels
             set { SetProperty(ref _geburtsdatum, value); }
         }
 
-
         public Action<KundeDto> OnSave { get; set; }
 
         public KundeEditierenViewModel(KundeDto kundeDto)

@@ -1,4 +1,4 @@
-﻿<Page x:Class="AutoReservation.UI.AutoListePage"
+﻿<Page x:Class="AutoReservation.UI.Views.Pages.AutoListePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

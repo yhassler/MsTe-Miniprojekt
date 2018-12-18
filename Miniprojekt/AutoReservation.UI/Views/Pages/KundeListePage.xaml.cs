@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.Interfaces;
+using AutoReservation.Service.Wcf;
+using AutoReservation.UI.ViewModels;
 
 namespace AutoReservation.UI.Views.Pages
 {
@@ -20,26 +11,44 @@ namespace AutoReservation.UI.Views.Pages
     /// </summary>
     public partial class KundeListePage : Page
     {
-        CollectionViewSource KundenListe;
+        IAutoReservationService Service;
 
         public KundeListePage()
         {
-            KundenListe = (CollectionViewSource)(this.Resources[KundenListe]);
-            DataContext = KundenListe;
+            Service = new AutoReservationService();
+            var viewModel = new KundeListeViewModel(Service.GetKunden());
+            viewModel.OnAdd += Add;
+            viewModel.OnEdit += Edit;
+            viewModel.OnDelete += Delete;
+
+            DataContext = viewModel;
         }
 
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        private void Add()
         {
+            var viewModel = new KundeEditierenViewModel(new KundeDto());
+            viewModel.OnSave += k => Service.InsertKunde(k);
 
+            var editPage = new KundeEditierenPage();
+            editPage.DataContext = viewModel;
+
+            // TODO Show
         }
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
 
+        private void Edit(KundeDto kunde)
+        {
+            var viewModel = new KundeEditierenViewModel(kunde);
+            viewModel.OnSave += k => Service.UpdateKunde(k);
+
+            var editPage = new KundeEditierenPage();
+            editPage.DataContext = viewModel;
+
+            // TODO Show
         }
 
-        private void Button_Click_Delete(object sender, RoutedEventArgs e)
+        private void Delete(KundeDto kunde)
         {
-
+            Service.DeleteKunde(kunde);
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutoReservation.UI
+namespace AutoReservation.UI.Views.Pages
 {
     /// <summary>
     /// Interaction logic for AutoListePage.xaml

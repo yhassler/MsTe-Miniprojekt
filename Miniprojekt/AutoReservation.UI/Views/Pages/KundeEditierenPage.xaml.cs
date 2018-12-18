@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AutoReservation.UI
+namespace AutoReservation.UI.Views.Pages
 {
     /// <summary>
     /// Interaction logic for KundeEditierenPage.xaml

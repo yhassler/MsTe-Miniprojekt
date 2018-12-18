@@ -21,7 +21,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <ListBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" SelectionChanged="LoadPage">
+            <ListBox Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
                 <ListBoxItem Content="Navigation" FontWeight="Bold" FontSize="18"/>
                 <ListBoxItem Content="Autoverwaltung" FontWeight="Bold" FontSize="14"/>
                 <Button Style="{StaticResource NavigationButton}" Click="NaviAutoListe" Content="Übersicht"/>
@@ -33,7 +33,7 @@
                 <Button Style="{StaticResource NavigationButton}" Click="NaviReservationListe" Content="Übersicht"/>
                 <Button Style="{StaticResource NavigationButton}" Click="NaviReservationAdd" Content="Erstellen"/>
             </ListBox>
-            <Frame x:Name="MainFrame" Source="WelcomePage.xaml" Grid.Column="2" Width="800" Margin="10" />
+            <Frame x:Name="MainFrame" Source="WelcomePage.xaml" Grid.Column="2" Width="800" Margin="10" NavigationUIVisibility="Hidden" />
         </Grid>
     </StackPanel>
 </Window>

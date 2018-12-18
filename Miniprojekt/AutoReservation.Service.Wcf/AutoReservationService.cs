@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.ServiceModel;
 using AutoReservation.BusinessLayer;
+using AutoReservation.BusinessLayer.Exceptions;
 using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.DataTransferObjects.Faults;
 using AutoReservation.Common.Interfaces;
 
 namespace AutoReservation.Service.Wcf
@@ -43,7 +46,17 @@ namespace AutoReservation.Service.Wcf
 
         public void UpdateAuto(AutoDto auto)
         {
-            AutoManager.Update(auto.ConvertToEntity());
+            try
+            { AutoManager.Update(auto.ConvertToEntity()); }
+            catch(OptimisticConcurrencyException<AutoDto>)
+            {
+                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
+                {
+                    Issue = "Datenintegritätsfehler",
+                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                };
+            throw new FaultException<OptimisticConcurrencyFault>(of);
+            }
         }
 
         public void DeleteAuto(AutoDto auto)
@@ -72,7 +85,16 @@ namespace AutoReservation.Service.Wcf
 
         public void UpdateKunde(KundeDto kunde)
         {
-            KundeManager.Update(kunde.ConvertToEntity());
+            try { KundeManager.Update(kunde.ConvertToEntity()); }
+            catch (OptimisticConcurrencyException<KundeDto>)
+            {
+                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
+                {
+                    Issue = "Datenintegritätsfehler",
+                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                };
+                throw new FaultException<OptimisticConcurrencyFault>(of);
+            }
         }
 
         public void DeleteKunde(KundeDto kunde)
@@ -96,12 +118,57 @@ namespace AutoReservation.Service.Wcf
 
         public void InsertReservation(ReservationDto reservation)
         {
-            ReservationManager.Insert(reservation.ConvertToEntity());
+            try { ReservationManager.Insert(reservation.ConvertToEntity()); }
+            catch (InvalidDateRangeException)
+            {
+                InvalidDateRangeFault idf = new InvalidDateRangeFault
+                {
+                    Issue = "Ungültiges Datum",
+                    Details = "Das angegebene Datum ist ungültig."
+                };
+                throw new FaultException<InvalidDateRangeFault>(idf);
+            }
+            catch (AutoUnavailableException)
+            {
+                AutoUnavailableFault auf = new AutoUnavailableFault
+                {
+                    Issue = "Auto nicht verfügbar",
+                    Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
+                };
+                throw new FaultException<AutoUnavailableFault>(auf);
+            }
         }
 
         public void UpdateReservation(ReservationDto reservation)
         {
-            ReservationManager.Update(reservation.ConvertToEntity());
+            try { ReservationManager.Update(reservation.ConvertToEntity()); }
+            catch (OptimisticConcurrencyException<AutoDto>)
+            {
+                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
+                {
+                    Issue = "Datenintegritätsfehler",
+                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                };
+                throw new FaultException<OptimisticConcurrencyFault>(of);
+            }
+            catch (InvalidDateRangeException)
+            {
+                InvalidDateRangeFault idf = new InvalidDateRangeFault
+                {
+                    Issue = "Ungültiges Datum",
+                    Details = "Das angegebene Datum ist ungültig."
+                };
+                throw new FaultException<InvalidDateRangeFault>(idf);
+            }
+            catch (AutoUnavailableException)
+            {
+                AutoUnavailableFault auf = new AutoUnavailableFault
+                {
+                    Issue = "Auto nicht verfügbar",
+                    Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
+                };
+                throw new FaultException<AutoUnavailableFault>(auf);
+            }
         }
 
         public void DeleteReservation(ReservationDto reservation)

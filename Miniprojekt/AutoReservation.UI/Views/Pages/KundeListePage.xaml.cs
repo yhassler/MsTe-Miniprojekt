@@ -11,9 +11,18 @@ namespace AutoReservation.UI.Views.Pages
     /// </summary>
     public partial class KundeListePage : Page
     {
-        IAutoReservationService Service;
+        private IAutoReservationService Service;
 
-        public KundeListePage()
+        private Frame MainFrame;
+
+        public KundeListePage(Frame mainFrame)
+        {
+            InitializeComponent();
+            LoadList();
+            MainFrame = mainFrame;
+        }
+
+        private void LoadList()
         {
             Service = new AutoReservationService();
             var viewModel = new KundeListeViewModel(Service.GetKunden());
@@ -27,28 +36,37 @@ namespace AutoReservation.UI.Views.Pages
         private void Add()
         {
             var viewModel = new KundeEditierenViewModel(new KundeDto());
-            viewModel.OnSave += k => Service.InsertKunde(k);
+            viewModel.OnSave += k =>
+            {
+                Service.InsertKunde(k);
+                MainFrame.Navigate(new KundeListePage(MainFrame));
+            };
 
             var editPage = new KundeEditierenPage();
             editPage.DataContext = viewModel;
 
-            // TODO Show
+            MainFrame.Navigate(editPage);
         }
 
         private void Edit(KundeDto kunde)
         {
             var viewModel = new KundeEditierenViewModel(kunde);
-            viewModel.OnSave += k => Service.UpdateKunde(k);
+            viewModel.OnSave += k =>
+            {
+                Service.UpdateKunde(k);
+                MainFrame.Navigate(new KundeListePage(MainFrame));
+            };
 
             var editPage = new KundeEditierenPage();
             editPage.DataContext = viewModel;
 
-            // TODO Show
+            MainFrame.Navigate(editPage);
         }
 
         private void Delete(KundeDto kunde)
         {
             Service.DeleteKunde(kunde);
+            LoadList();
         }
     }
 }

@@ -22,12 +22,22 @@ namespace AutoReservation.UI
 
         private void NaviAutoListe(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new AutoListePage());
+            MainFrame.Navigate(new AutoListePage(MainFrame));
         }
 
         private void NaviAutoAdd(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new AutoEditierenPage());
+            var viewModel = new AutoEditierenViewModel(new AutoDto());
+            viewModel.OnSave += a =>
+            {
+                Service.InsertAuto(a);
+                MainFrame.Navigate(new AutoListePage(MainFrame));
+            };
+
+            var editPage = new AutoEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
         }
 
         private void NaviKundeListe(object sender, RoutedEventArgs e)
@@ -37,7 +47,6 @@ namespace AutoReservation.UI
 
         private void NaviKundeAdd(object sender, RoutedEventArgs e)
         {
-
             var viewModel = new KundeEditierenViewModel(new KundeDto());
             viewModel.OnSave += k =>
             {
@@ -53,12 +62,22 @@ namespace AutoReservation.UI
 
         private void NaviReservationListe(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ReservationListePage());
+            MainFrame.Navigate(new ReservationListePage(MainFrame));
         }
 
         private void NaviReservationAdd(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ReservationEditierenPage());
+            var viewModel = new ReservationEditierenViewModel(new ReservationDto());
+            viewModel.OnSave += r =>
+            {
+                Service.InsertReservation(r);
+                MainFrame.Navigate(new ReservationListePage(MainFrame));
+            };
+
+            var editPage = new ReservationEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
         }
     }
 }

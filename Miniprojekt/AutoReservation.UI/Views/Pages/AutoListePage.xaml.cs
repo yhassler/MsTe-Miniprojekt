@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.Interfaces;
+using AutoReservation.Service.Wcf;
+using AutoReservation.UI.ViewModels;
 
 namespace AutoReservation.UI.Views.Pages
 {
@@ -20,26 +11,62 @@ namespace AutoReservation.UI.Views.Pages
     /// </summary>
     public partial class AutoListePage : Page
     {
-        CollectionViewSource AutoListe;
+        private IAutoReservationService Service;
 
-        public AutoListePage()
+        private Frame MainFrame;
+
+        public AutoListePage(Frame mainFrame)
         {
-            AutoListe = (CollectionViewSource)(this.Resources[AutoListe]);
-            DataContext = AutoListe;
+            InitializeComponent();
+            LoadList();
+            MainFrame = mainFrame;
         }
 
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        private void LoadList()
         {
-            
+            Service = new AutoReservationService();
+            var viewModel = new AutoListeViewModel(Service.GetAutos());
+            viewModel.OnAdd += Add;
+            viewModel.OnEdit += Edit;
+            viewModel.OnDelete += Delete;
+
+            DataContext = viewModel;
         }
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
 
+        private void Add()
+        {
+            var viewModel = new AutoEditierenViewModel(new AutoDto());
+            viewModel.OnSave += a =>
+            {
+                Service.InsertAuto(a);
+                MainFrame.Navigate(new AutoListePage(MainFrame));
+            };
+
+            var editPage = new AutoEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
         }
 
-        private void Button_Click_Delete(object sender, RoutedEventArgs e)
+        private void Edit(AutoDto auto)
         {
+            var viewModel = new AutoEditierenViewModel(auto);
+            viewModel.OnSave += a =>
+            {
+                Service.UpdateAuto(a);
+                MainFrame.Navigate(new AutoListePage(MainFrame));
+            };
 
+            var editPage = new AutoEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
+        }
+
+        private void Delete(AutoDto auto)
+        {
+            Service.DeleteAuto(auto);
+            LoadList();
         }
     }
 }

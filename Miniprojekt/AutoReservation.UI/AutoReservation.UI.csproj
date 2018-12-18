@@ -62,7 +62,9 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\AutoEditierenViewModel.cs" />
+    <Compile Include="ViewModels\ReservationListeViewModel.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
+    <Compile Include="ViewModels\AutoListeViewModel.cs" />
     <Compile Include="ViewModels\KundeListeViewModel.cs" />
     <Compile Include="ViewModels\KundeEditierenViewModel.cs" />
     <Compile Include="ViewModels\ReservationEditierenViewModel.cs" />

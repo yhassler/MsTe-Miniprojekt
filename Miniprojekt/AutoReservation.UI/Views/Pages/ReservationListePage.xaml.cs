@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.Interfaces;
+using AutoReservation.Service.Wcf;
+using AutoReservation.UI.ViewModels;
 
 namespace AutoReservation.UI.Views.Pages
 {
@@ -20,26 +11,62 @@ namespace AutoReservation.UI.Views.Pages
     /// </summary>
     public partial class ReservationListePage : Page
     {
-        CollectionViewSource ReservationListe;
+        private IAutoReservationService Service;
 
-        public ReservationListePage()
+        private Frame MainFrame;
+
+        public ReservationListePage(Frame mainFrame)
         {
-            ReservationListe = (CollectionViewSource)(this.Resources[ReservationListe]);
-            DataContext = ReservationListe;
+            InitializeComponent();
+            LoadList();
+            MainFrame = mainFrame;
         }
 
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        private void LoadList()
         {
+            Service = new AutoReservationService();
+            var viewModel = new ReservationListeViewModel(Service.GetReservationen());
+            viewModel.OnAdd += Add;
+            viewModel.OnEdit += Edit;
+            viewModel.OnDelete += Delete;
 
+            DataContext = viewModel;
         }
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
 
+        private void Add()
+        {
+            var viewModel = new ReservationEditierenViewModel(new ReservationDto());
+            viewModel.OnSave += r =>
+            {
+                Service.InsertReservation(r);
+                MainFrame.Navigate(new ReservationListePage(MainFrame));
+            };
+
+            var editPage = new ReservationEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
         }
 
-        private void Button_Click_Delete(object sender, RoutedEventArgs e)
+        private void Edit(ReservationDto reservation)
         {
+            var viewModel = new ReservationEditierenViewModel(reservation);
+            viewModel.OnSave += r =>
+            {
+                Service.UpdateReservation(r);
+                MainFrame.Navigate(new ReservationListePage(MainFrame));
+            };
 
+            var editPage = new ReservationEditierenPage();
+            editPage.DataContext = viewModel;
+
+            MainFrame.Navigate(editPage);
+        }
+
+        private void Delete(ReservationDto reservation)
+        {
+            Service.DeleteReservation(reservation);
+            LoadList();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace AutoReservation.UI.Views.Pages
 
         private void Add()
         {
-            var viewModel = new ReservationEditierenViewModel(new ReservationDto());
+            var viewModel = new ReservationEditierenViewModel(new ReservationDto(), Service);
             viewModel.OnSave += r =>
             {
                 Service.InsertReservation(r);
@@ -50,7 +50,7 @@ namespace AutoReservation.UI.Views.Pages
 
         private void Edit(ReservationDto reservation)
         {
-            var viewModel = new ReservationEditierenViewModel(reservation);
+            var viewModel = new ReservationEditierenViewModel(reservation, Service);
             viewModel.OnSave += r =>
             {
                 Service.UpdateReservation(r);

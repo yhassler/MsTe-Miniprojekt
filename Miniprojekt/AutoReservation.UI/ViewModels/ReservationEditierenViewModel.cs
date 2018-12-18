@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AutoReservation.Common.DataTransferObjects;
+using AutoReservation.Common.Interfaces;
 using AutoReservation.UI.Commands;
 
 namespace AutoReservation.UI.ViewModels
@@ -46,10 +47,14 @@ namespace AutoReservation.UI.ViewModels
 
         public Action<ReservationDto> OnSave { get; set; }
 
-        public ReservationEditierenViewModel(ReservationDto reservationDto)
+        public ReservationEditierenViewModel(ReservationDto reservationDto, IAutoReservationService service)
         {
+            Kunden = service.GetKunden();
+            Autos = service.GetAutos();
+            OnPropertyChanged(nameof(Autos));
+            OnPropertyChanged(nameof(Kunden));
+
             Load(reservationDto);
-            // TODO Load cars and people list
 
             SaveCommand = new RelayCommand(Save);
         }

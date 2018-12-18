@@ -67,7 +67,7 @@ namespace AutoReservation.UI
 
         private void NaviReservationAdd(object sender, RoutedEventArgs e)
         {
-            var viewModel = new ReservationEditierenViewModel(new ReservationDto());
+            var viewModel = new ReservationEditierenViewModel(new ReservationDto(), Service);
             viewModel.OnSave += r =>
             {
                 Service.InsertReservation(r);

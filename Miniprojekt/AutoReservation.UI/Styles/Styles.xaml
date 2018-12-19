@@ -19,6 +19,7 @@
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="20 0"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
     <Style BasedOn="{StaticResource EditControl}" TargetType="Label" />

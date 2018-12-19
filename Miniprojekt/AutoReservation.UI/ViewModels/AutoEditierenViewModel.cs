@@ -76,8 +76,7 @@ namespace AutoReservation.UI.ViewModels
             AutoDto.AutoKlasse = AutoKlasse;
             AutoDto.Tagestarif = Tagestarif;
             AutoDto.Basistarif = Basistarif;
-
-            // TODO Validate and store in the database
+            
             OnSave?.Invoke(AutoDto);
         }
     }

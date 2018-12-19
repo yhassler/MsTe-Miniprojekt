@@ -53,8 +53,7 @@ namespace AutoReservation.UI.ViewModels
             KundeDto.Vorname = Vorname;
             KundeDto.Nachname = Nachname;
             KundeDto.Geburtsdatum = Geburtsdatum;
-
-            // TODO Validate and store in the database
+            
             OnSave?.Invoke(KundeDto);
         }
     }

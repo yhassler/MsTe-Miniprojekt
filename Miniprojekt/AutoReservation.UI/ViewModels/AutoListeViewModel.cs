@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.UI.Commands;
 
@@ -26,6 +27,36 @@ namespace AutoReservation.UI.ViewModels
         {
             get { return _selectedAuto; }
             set { SetProperty(ref _selectedAuto, value); }
+        }
+
+        public IList<string> SortOptions => new List<string>
+        {
+            "Marke",
+            "Tagestarif",
+            "Autoklasse"
+        };
+
+        private string _selectedSortOption;
+        public string SelectedSortOption
+        {
+            get { return _selectedSortOption; }
+            set
+            {
+                switch (value)
+                {
+                    case "Marke":
+                        Autos = new ObservableCollection<AutoDto>(Autos.OrderBy(a => a.Marke));
+                        break;
+                    case "Tagestarif":
+                        Autos = new ObservableCollection<AutoDto>(Autos.OrderBy(a => a.Tagestarif));
+                        break;
+                    case "Autoklasse":
+                        Autos = new ObservableCollection<AutoDto>(Autos.OrderBy(a => a.AutoKlasse));
+                        break;
+                }
+                SetProperty(ref _selectedSortOption, value);
+                OnPropertyChanged(nameof(Autos));
+            }
         }
 
         public Action OnAdd { get; set; }

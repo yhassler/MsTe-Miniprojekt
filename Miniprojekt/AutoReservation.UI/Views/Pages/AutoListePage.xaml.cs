@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using AutoReservation.BusinessLayer.Exceptions;
 using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.Interfaces;
 using AutoReservation.Service.Wcf;
@@ -51,9 +52,19 @@ namespace AutoReservation.UI.Views.Pages
         private void Edit(AutoDto auto)
         {
             var viewModel = new AutoEditierenViewModel(auto);
+            
+
             viewModel.OnSave += a =>
             {
-                Service.UpdateAuto(a);
+                try
+                {
+                    Service.UpdateAuto(a);
+                }
+                catch(OptimisticConcurrencyException<AutoDto>)
+                {
+                    var errorPage = new UpdateConcurrencyWindow();
+                    errorPage.DataContext = viewModel;
+                }
                 MainFrame.Navigate(new AutoListePage(MainFrame));
             };
 

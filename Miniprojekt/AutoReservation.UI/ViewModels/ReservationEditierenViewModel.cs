@@ -74,8 +74,7 @@ namespace AutoReservation.UI.ViewModels
             ReservationDto.Kunde = Kunde;
             ReservationDto.Von = Von;
             ReservationDto.Bis = Bis;
-
-            // TODO Validate and store in the database
+            
             OnSave?.Invoke(ReservationDto);
         }
     }

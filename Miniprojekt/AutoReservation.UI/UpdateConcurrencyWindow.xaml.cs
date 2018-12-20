@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoReservation.Common.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,25 @@ namespace AutoReservation.UI
     /// </summary>
     public partial class UpdateConcurrencyWindow : Window
     {
-        public UpdateConcurrencyWindow()
+        public UpdateConcurrencyWindow(object o)
         {
             InitializeComponent();
+
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Reload(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Overwrite(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

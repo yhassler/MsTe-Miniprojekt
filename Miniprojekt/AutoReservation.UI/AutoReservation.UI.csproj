@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\KundeListeViewModel.cs" />
     <Compile Include="ViewModels\KundeEditierenViewModel.cs" />
     <Compile Include="ViewModels\ReservationEditierenViewModel.cs" />
+    <Compile Include="ViewModels\UpdateConcurrencyWindowViewModel.cs" />
     <Compile Include="Views\Pages\KundeEditierenPage.xaml.cs">
       <DependentUpon>KundeEditierenPage.xaml</DependentUpon>
     </Compile>

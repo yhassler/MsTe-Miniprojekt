@@ -32,7 +32,16 @@ namespace AutoReservation.Service.Wcf
         public AutoDto GetAutoById(int id)
         {
             WriteActualMethod();
-            return AutoManager.GetById(id).ConvertToDto();
+            try
+            {
+                return AutoManager.GetById(id).ConvertToDto();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new FaultException<IllegalIdFault>(
+                    new IllegalIdFault() {  /* .... */ }
+                );
+            }
         }
 
         public IList<AutoDto> GetAutos()
@@ -76,7 +85,15 @@ namespace AutoReservation.Service.Wcf
         public KundeDto GetKundeById(int id)
         {
             WriteActualMethod();
-            return KundeManager.GetById(id).ConvertToDto();
+            try { 
+                return KundeManager.GetById(id).ConvertToDto();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new FaultException<IllegalIdFault>(
+                    new IllegalIdFault() {  /* .... */ }
+                );
+            }
         }
 
         public IList<KundeDto> GetKunden()
@@ -119,7 +136,15 @@ namespace AutoReservation.Service.Wcf
         public ReservationDto GetReservationById(int id)
         {
             WriteActualMethod();
-            return ReservationManager.GetById(id).ConvertToDto();
+            try { 
+                return ReservationManager.GetById(id).ConvertToDto();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new FaultException<IllegalIdFault>(
+                    new IllegalIdFault() {  /* .... */ }
+                );
+            }
         }
 
         public IList<ReservationDto> GetReservationen()

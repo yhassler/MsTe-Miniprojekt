@@ -62,8 +62,8 @@ namespace AutoReservation.UI.Views.Pages
                 }
                 catch(OptimisticConcurrencyException<AutoDto>)
                 {
-                    var errorPage = new UpdateConcurrencyWindow();
-                    errorPage.DataContext = viewModel;
+                    var errorWindow = new UpdateConcurrencyWindow(auto);
+                    errorWindow.DataContext = viewModel;
                 }
                 MainFrame.Navigate(new AutoListePage(MainFrame));
             };

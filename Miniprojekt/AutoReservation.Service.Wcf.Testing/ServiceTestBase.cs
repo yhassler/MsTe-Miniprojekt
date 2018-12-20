@@ -88,19 +88,19 @@ namespace AutoReservation.Service.Wcf.Testing
         [Fact]
         public void GetAutoByIdWithIllegalIdTest()
         {
-            Assert.Throws<FaultException>(() => Target.GetAutoById(-1));
+            Assert.Throws<FaultException<IllegalIdFault>>(() => Target.GetAutoById(-1));
         }
 
         [Fact]
         public void GetKundeByIdWithIllegalIdTest()
         {
-            Assert.Throws<FaultException>(() => Target.GetKundeById(-1));
+            Assert.Throws<FaultException<IllegalIdFault>>(() => Target.GetKundeById(-1));
         }
 
         [Fact]
         public void GetReservationByNrWithIllegalIdTest()
         {
-            Assert.Throws<FaultException>(() => Target.GetReservationById(-1));
+            Assert.Throws<FaultException<IllegalIdFault>>(() => Target.GetReservationById(-1));
         }
 
         #endregion

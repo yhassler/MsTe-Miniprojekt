@@ -12,9 +12,11 @@ namespace AutoReservation.Common.Interfaces
         #region Auto
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         IList<AutoDto> GetAutos();
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         AutoDto GetAutoById(int id);
 
         [OperationContract]
@@ -32,9 +34,11 @@ namespace AutoReservation.Common.Interfaces
         #region Kunde
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         IList<KundeDto> GetKunden();
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         KundeDto GetKundeById(int id);
 
         [OperationContract]
@@ -52,9 +56,11 @@ namespace AutoReservation.Common.Interfaces
         #region Reservation
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         IList<ReservationDto> GetReservationen();
 
         [OperationContract]
+        [FaultContract(typeof(IllegalIdFault))]
         ReservationDto GetReservationById(int id);
 
         [OperationContract]

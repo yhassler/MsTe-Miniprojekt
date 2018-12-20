@@ -26,9 +26,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Abbrechen" HorizontalAlignment="Center"/>
-            <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Änderungen laden" HorizontalAlignment="Center"/>
-            <Button Grid.Column="2" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Überschreiben" HorizontalAlignment="Center"/>
+            <Button Click="Cancel" Grid.Column="0" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Abbrechen" HorizontalAlignment="Center"/>
+            <Button Click="Reload" Grid.Column="1" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Änderungen laden" HorizontalAlignment="Center"/>
+            <Button Click="Overwrite" Grid.Column="2" Grid.Row="0" Style="{StaticResource GeneralButton}" Content="Überschreiben" HorizontalAlignment="Center"/>
         </Grid>
     </StackPanel>
 </Window>

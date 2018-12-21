@@ -7,6 +7,7 @@ using AutoReservation.BusinessLayer.Exceptions;
 using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.DataTransferObjects.Faults;
 using AutoReservation.Common.Interfaces;
+using AutoReservation.Dal.Entities;
 
 namespace AutoReservation.Service.Wcf
 {
@@ -61,14 +62,16 @@ namespace AutoReservation.Service.Wcf
             WriteActualMethod();
             try
             { AutoManager.Update(auto.ConvertToEntity()); }
-            catch (OptimisticConcurrencyException<AutoDto>)
+            catch (OptimisticConcurrencyException<Auto>)
             {
-                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
-                {
-                    Issue = "Datenintegritätsfehler",
-                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
-                };
-                throw new FaultException<OptimisticConcurrencyFault>(of);
+
+                throw new FaultException<OptimisticConcurrencyFault>(
+                    new OptimisticConcurrencyFault()
+                    {
+                        Issue = "Datenintegritätsfehler",
+                        Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                    }
+                    );
             }
         }
 
@@ -112,14 +115,15 @@ namespace AutoReservation.Service.Wcf
         {
             WriteActualMethod();
             try { KundeManager.Update(kunde.ConvertToEntity()); }
-            catch (OptimisticConcurrencyException<KundeDto>)
+            catch (OptimisticConcurrencyException<Kunde>)
             {
-                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
-                {
-                    Issue = "Datenintegritätsfehler",
-                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
-                };
-                throw new FaultException<OptimisticConcurrencyFault>(of);
+                throw new FaultException<OptimisticConcurrencyFault>(
+                    new OptimisticConcurrencyFault()
+                    {
+                        Issue = "Datenintegritätsfehler",
+                        Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                    }
+                    );
             }
         }
 
@@ -159,21 +163,24 @@ namespace AutoReservation.Service.Wcf
             try { ReservationManager.Insert(reservation.ConvertToEntity()); }
             catch (InvalidDateRangeException)
             {
-                InvalidDateRangeFault idf = new InvalidDateRangeFault
-                {
-                    Issue = "Ungültiges Datum",
-                    Details = "Das angegebene Datum ist ungültig."
-                };
-                throw new FaultException<InvalidDateRangeFault>(idf);
+                throw new FaultException<InvalidDateRangeFault>(
+                    new InvalidDateRangeFault()
+                    {
+                        Issue = "Ungültiges Datum",
+                        Details = "Das angegebene Datum ist ungültig."
+                    }
+                    );
             }
             catch (AutoUnavailableException)
             {
-                AutoUnavailableFault auf = new AutoUnavailableFault
-                {
-                    Issue = "Auto nicht verfügbar",
-                    Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
-                };
-                throw new FaultException<AutoUnavailableFault>(auf);
+
+                throw new FaultException<AutoUnavailableFault>(
+                    new AutoUnavailableFault()
+                    {
+                        Issue = "Auto nicht verfügbar",
+                        Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
+                    }
+                    );
             }
         }
 
@@ -181,32 +188,35 @@ namespace AutoReservation.Service.Wcf
         {
             WriteActualMethod();
             try { ReservationManager.Update(reservation.ConvertToEntity()); }
-            catch (OptimisticConcurrencyException<AutoDto>)
+            catch (OptimisticConcurrencyException<Reservation>)
             {
-                OptimisticConcurrencyFault of = new OptimisticConcurrencyFault
-                {
-                    Issue = "Datenintegritätsfehler",
-                    Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
-                };
-                throw new FaultException<OptimisticConcurrencyFault>(of);
+                throw new FaultException<OptimisticConcurrencyFault>(
+                    new OptimisticConcurrencyFault()
+                    {
+                        Issue = "Datenintegritätsfehler",
+                        Details = "Das Objekt wird bereits von einer anderen Person bearbeitet."
+                    }
+                    );
             }
             catch (InvalidDateRangeException)
             {
-                InvalidDateRangeFault idf = new InvalidDateRangeFault
-                {
-                    Issue = "Ungültiges Datum",
-                    Details = "Das angegebene Datum ist ungültig."
-                };
-                throw new FaultException<InvalidDateRangeFault>(idf);
+                throw new FaultException<InvalidDateRangeFault>(
+                    new InvalidDateRangeFault()
+                    {
+                        Issue = "Ungültiges Datum",
+                        Details = "Das angegebene Datum ist ungültig."
+                    }
+                    );
             }
             catch (AutoUnavailableException)
             {
-                AutoUnavailableFault auf = new AutoUnavailableFault
-                {
-                    Issue = "Auto nicht verfügbar",
-                    Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
-                };
-                throw new FaultException<AutoUnavailableFault>(auf);
+                throw new FaultException<AutoUnavailableFault>(
+                    new AutoUnavailableFault()
+                    {
+                        Issue = "Auto nicht verfügbar",
+                        Details = "Das ausgewählte Auto is zur gewünschten Zeit nicht verfügbar."
+                    }
+                    );
             }
         }
 
